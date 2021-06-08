@@ -2,6 +2,6 @@
 @import "mixins";
 @import "custom";
 
-@import "variables-theme.scss";
-@import "mixins-theme.scss";
-@import "uikit-theme.scss";
+body {
+  margin: 0;
+}
