@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Recette } from 'src/app/Models/recette';
+import { RecetteService } from '../../Services/recette.service';
 
 @Component({
   selector: 'app-page-recette',
@@ -7,11 +9,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./page-recette.component.scss'],
 })
 export class PageRecetteComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private recetteService: RecetteService
+  ) {}
+
+  public recette!: Recette | null;
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      console.log('Id de la recette : ', params['id']);
-    });
+    const id = this.route.snapshot.params.id;
+    this.recette = this.recetteService.getRecette(id);
   }
 }

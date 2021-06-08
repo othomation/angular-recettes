@@ -1,0 +1,49 @@
+<div class="uk-card uk-card-default uk-card-hover">
+  <div class="uk-card-header">
+    <div class="uk-grid-small uk-flex-middle uk-flex-center" uk-grid>
+      <div class="uk-width-expand">
+        <img src="{{ recette.getImageUrl() }}" />
+      </div>
+      <div class="uk-width-auto">
+        <h3 class="uk-card-title uk-margin-remove-bottom">
+          {{ recette.getNom() }}
+        </h3>
+        <p class="uk-text-meta uk-margin-remove-top">
+          <span
+            >Difficulté : {{ recette.getDifficulte() }}/{{
+              recette.difficulteMax
+            }}</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="uk-card-body" *ngIf="isComplete">
+    <div class="uk-grid-divider" uk-grid>
+      <article class="uk-grid-item">
+        <em>Etapes</em>
+        <dl class="uk-description-list uk-description-list-divider">
+          <div *ngIf="recette.getEtapes().length === 0">Pas d'étapes...</div>
+          <div *ngFor="let etape of recette.getEtapes(); let index = index">
+            <dt>{{ index + 1 }} | {{ etape.nom }}</dt>
+            <dd>{{ etape.description }}</dd>
+          </div>
+        </dl>
+      </article>
+      <article class="uk-grid-item">
+        <em>Ingrédients</em>
+        <ul class="uk-list uk-list-large uk-list-divider">
+          <div *ngIf="recette.getEtapes().length === 0">
+            Pas d'ingrédients...
+          </div>
+          <li *ngFor="let ingredient of recette.getIngredients()">
+            {{ ingredient.nom }}
+          </li>
+        </ul>
+      </article>
+    </div>
+  </div>
+  <!-- <div class="uk-card-footer">
+        <a href="#" class="uk-button uk-button-text">Read more</a>
+    </div> -->
+</div>

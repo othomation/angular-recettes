@@ -7,6 +7,7 @@ import { PageAccueilComponent } from './Pages/page-accueil/page-accueil.componen
 import { PageRecetteComponent } from './Pages/page-recette/page-recette.component';
 import { PageRecettesComponent } from './Pages/page-recettes/page-recettes.component';
 import { MenuComponent } from './Components/menu/menu.component';
+import { CardRecetteComponent } from './Pages/page-recette/components/card-recette/card-recette.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MenuComponent } from './Components/menu/menu.component';
     PageAccueilComponent,
     PageRecetteComponent,
     PageRecettesComponent,
-    MenuComponent
+    MenuComponent,
+    CardRecetteComponent
   ],
   imports: [
     BrowserModule,
