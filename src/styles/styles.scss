@@ -1,7 +1,10 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap");
+@import "normalize";
 @import "variables";
-@import "mixins";
-@import "custom";
+@import "helper";
 
-@import "variables-theme.scss";
-@import "mixins-theme.scss";
-@import "uikit-theme.scss";
+:root {
+  font-family: $base__font;
+  font-size: 20px;
+}

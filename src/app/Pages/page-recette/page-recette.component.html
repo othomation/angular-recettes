@@ -1,1 +1,10 @@
-Page d'une recette
+<div *ngIf="recette; else noRecette">
+  <app-card-recette [recette]="recette"></app-card-recette>
+</div>
+
+<ng-template #noRecette
+  ><div class="uk-alert-danger" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p>Cette recette n'existe pas.</p>
+  </div></ng-template
+>

@@ -1,1 +1,15 @@
-Page des recettes
+<section *ngIf="recettes; else noRecettes" uk-grid="masonry: true">
+  <article
+    class="recipe__card"
+    *ngFor="let recette of recettes"
+    data-id="{{ recette.getId() }}"
+  >
+    <a [routerLink]="recette.getId()">
+      <app-card-recette
+        [recette]="recette"
+        [isComplete]="false"
+      ></app-card-recette>
+    </a>
+  </article>
+</section>
+<ng-template #noRecettes>Pas de recettes</ng-template>

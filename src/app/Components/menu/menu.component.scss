@@ -1,0 +1,33 @@
+@import "variables";
+
+.active {
+  background-color: lighten($orange, 10%);
+}
+
+nav {
+  margin-bottom: 1em;
+  background-color: $orange;
+  ul {
+    display: flex;
+    justify-content: center;
+
+    list-style: none;
+
+    padding-left: 0;
+
+    > li {
+      cursor: pointer;
+      margin: 0.2em 0.5em;
+      padding: 0.5em 1em;
+      border-radius: 0.5em;
+      &:hover {
+        background-color: lighten($orange, 5%);
+      }
+      a {
+        color: $white;
+        text-decoration: none;
+        font-weight: 600;
+      }
+    }
+  }
+}
