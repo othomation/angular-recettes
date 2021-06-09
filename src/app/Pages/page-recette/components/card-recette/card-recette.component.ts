@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recette } from 'src/app/Models/recette';
+import { RecetteService } from 'src/app/Services/recette.service';
 
 @Component({
   selector: 'app-card-recette',
@@ -7,7 +8,7 @@ import { Recette } from 'src/app/Models/recette';
   styleUrls: ['./card-recette.component.scss'],
 })
 export class CardRecetteComponent implements OnInit {
-  constructor() {}
+  constructor(private recetteService: RecetteService) {}
   @Input()
   public recette!: Recette;
   @Input()
@@ -15,5 +16,10 @@ export class CardRecetteComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Recette :', this.recette);
+  }
+
+  emitToggleFavoris() {
+    const response = this.recetteService.toggleFavoris(this.recette);
+    console.log(response);
   }
 }

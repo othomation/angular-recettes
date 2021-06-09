@@ -1,15 +1,16 @@
-<nav
-  class="uk-navbar-container"
-  uk-navbar="boundary-align: true; align: center;"
->
-  <div class="uk-navbar-center">
-    <ul class="uk-navbar-nav">
-      <li>
-        <a [routerLink]="'/home'" class="uk-text-bold">Accueil</a>
-      </li>
-      <li>
-        <a [routerLink]="'/recettes'" class="uk-text-bold">Recettes</a>
-      </li>
-    </ul>
-  </div>
+<nav class="navbar">
+  <ul class="navbar__list">
+    <li class="navbar__list__item" [routerLinkActive]="['active']">
+      <a [routerLink]="'/home'" class="navbar__list__item--link">Accueil</a>
+    </li>
+    <li
+      class="navbar__list__item"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a [routerLink]="'/recettes'" class="navbar__list__item--link"
+        >Recettes</a
+      >
+    </li>
+  </ul>
 </nav>

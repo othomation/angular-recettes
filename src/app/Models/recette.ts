@@ -1,25 +1,38 @@
-interface IEtape {
-  nom: string;
-  description: string;
-}
-interface IIngredient {
-  nom: string;
-}
+import Indicateurs from './indicateurs';
+import Etape from './etape';
+import Ingredient from './ingredient';
 export class Recette {
   public difficulteMax = 5;
   constructor(
-    private nom: string,
     private id: string,
+    private nom: string,
     private imageUrl: string,
-    private etapes: Array<IEtape>,
-    private ingredients: Array<IIngredient>,
-    private difficulte: 1 | 2 | 3 | 4 | 5
+    private indicateurs: Indicateurs,
+    private etapes: Array<Etape>,
+    private ingredients: Ingredient[],
+    private favoris: boolean
   ) {}
 
-  getNom = () => this.nom;
   getId = () => this.id;
-  getEtapes = () => this.etapes;
-  getIngredients = () => this.ingredients;
-  getDifficulte = () => this.difficulte;
+  getNom = () => this.nom;
   getImageUrl = () => this.imageUrl;
+  getIngredients = () => this.ingredients;
+  getEtapes = () => this.etapes;
+  getIndicateurs = () => this.indicateurs;
+  getFavoris = () => this.favoris;
+
+  setId = (id: string) => (this.id = id);
+  setNom = (nom: string) => (this.nom = nom);
+  setImageUrl = (imageUrl: string) => (this.imageUrl = imageUrl);
+  setIngredients = (ingredients: Ingredient[]) =>
+    (this.ingredients = ingredients);
+  addIngredients = (ingredient: Ingredient) =>
+    this.ingredients.push(ingredient);
+  setEtapes = (etapes: Etape[]) => (this.etapes = etapes);
+  addEtape = (etape: Etape) => this.etapes.push(etape);
+  setIndicateurs = (indicateurs: Indicateurs) =>
+    (this.indicateurs = indicateurs);
+  setFavoris = (favoris: boolean) => (this.favoris = favoris);
+
+  toggleFavoris = () => (this.favoris = !this.favoris);
 }

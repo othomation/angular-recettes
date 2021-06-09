@@ -2,64 +2,95 @@ import { Recette } from '../Models/recette';
 import { v4 as uuidv4 } from 'uuid';
 export const Recettes: Array<Recette> = [
   new Recette(
-    'Pizza',
     '1',
+    'Pizza',
     'https://st.depositphotos.com/1003814/5052/i/950/depositphotos_50523105-stock-photo-pizza-with-tomatoes.jpg',
+    {
+      temps_preparation: 20,
+      temps_vaisselle: 10,
+      temps_cuisson: 40,
+      difficulte: 2,
+      nombre_personnes: 4,
+      cout: 1,
+    },
     [
       {
-        nom: 'Petrir la pâte',
+        obligatoire: true,
+        ordre: 1,
         description: 'Il faut prendre son marteau et taper sur la farine',
       },
       {
-        nom: "Donner de l'amour",
+        obligatoire: false,
+        ordre: 2,
         description: 'Faites un petit bisou tout doux sur votre pizza.',
       },
       {
-        nom: 'Enfourner',
+        obligatoire: true,
+        ordre: 3,
         description:
           'Prenez vos petites main et mettez moi cette pizza au four !',
       },
     ],
-    [{ nom: 'farine' }, { nom: 'sauce tomate' }, { nom: 'fromage plastique' }],
-    1
-  ),
-  new Recette(
-    'Sushi',
-    '2',
-    'https://static.lexpress.fr/medias_12020/w_2048,h_1146,c_crop,x_0,y_154/w_480,h_270,c_fill,g_north/v1550742170/sushi-saumon-maki-saumon-japonais_6154396.jpg',
     [
       {
-        nom: 'Acheter du talent',
-        description:
-          "Il faut aller au japon et apprendre à couper du poisson comme il faut. C'est tout.",
+        nom: 'farine',
+        quantite: 100,
+        obligatoire: true,
+        unite: 'gr',
+      },
+      {
+        nom: 'lait',
+        quantite: 1,
+        obligatoire: true,
+        unite: 'l',
       },
     ],
-    [{ nom: 'riz' }, { nom: 'vinaigre' }, { nom: 'saumon' }, { nom: 'talent' }],
-    3
+    true
   ),
   new Recette(
-    'Gyoza poireaux',
     '3',
+    'Gyoza poireaux',
     'https://www.audreycuisine.fr/wp-content/uploads/2020/05/shutterstock_1352181614-scaled.jpg',
+    {
+      temps_preparation: 20,
+      temps_vaisselle: 10,
+      temps_cuisson: 40,
+      difficulte: 2,
+      nombre_personnes: 4,
+      cout: 1,
+    },
     [
       {
-        nom: 'Petrir la pâte',
-        description: 'Faut masser masser masser la pate !',
+        obligatoire: true,
+        ordre: 1,
+        description: 'Il faut prendre son marteau et taper sur les poireaux',
       },
       {
-        nom: 'Router bouler',
-        description: 'Attention, ne roule que la pierre qui mousse.',
+        obligatoire: false,
+        ordre: 2,
+        description: 'Faites un petit bisou tout doux sur votre pizzgyozaa.',
       },
       {
-        nom: 'Frire',
-        description: 'Vous brûlez pas...',
+        obligatoire: true,
+        ordre: 3,
+        description:
+          'Prenez vos petites main et mettez moi cette pate au four !',
       },
     ],
     [
-      { nom: 'pate farineuse' },
-      { nom: 'poireaux' },
-      { nom: 'bonne huile du bled' },
+      {
+        nom: 'farine',
+        quantite: 100,
+        obligatoire: true,
+        unite: 'gr',
+      },
+      {
+        nom: 'talent',
+        quantite: 2222,
+        obligatoire: true,
+        unite: 'l',
+      },
     ],
-    5
+    true
   ),
 ];

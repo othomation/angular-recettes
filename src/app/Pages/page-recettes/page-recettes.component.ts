@@ -8,7 +8,8 @@ import { RecetteService } from '../../Services/recette.service';
 })
 export class PageRecettesComponent implements OnInit {
   constructor(private recetteService: RecetteService) {}
-  public recettes: Array<Recette> = [];
+  public recettes: Array<Recette> | null = [];
+
   async ngOnInit(): Promise<void> {
     this.recettes = await this.recetteService.getRecettes();
     console.log(this.recettes);

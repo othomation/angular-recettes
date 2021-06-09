@@ -16,8 +16,8 @@ export class PageRecetteComponent implements OnInit {
 
   public recette!: Recette | null;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     const id = this.route.snapshot.params.id;
-    this.recette = this.recetteService.getRecette(id);
+    this.recette = await this.recetteService.getRecette(id);
   }
 }

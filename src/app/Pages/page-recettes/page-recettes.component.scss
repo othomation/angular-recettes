@@ -1,0 +1,20 @@
+@import "variables";
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1em 1em;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . .";
+  margin: 2em;
+}
+
+.recipe__card a {
+  text-decoration: none;
+}
+
+.recipe__card:hover {
+  filter: drop-shadow(2px 4px 6px $gray--medium);
+}

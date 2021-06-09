@@ -7,12 +7,33 @@ import { Recettes } from '../Mock/recettes.mock';
 export class RecetteService {
   constructor() {}
 
-  async getRecettes(): Promise<Array<Recette>> {
-    return Promise.resolve(Recettes);
+  async getRecettes(): Promise<Array<Recette> | null> {
+    let data;
+    try {
+      const response = await Recettes;
+      data = await response;
+    } catch (error) {
+      console.error('[ RecetteService.getRecettes() ]', error);
+      data = null;
+    }
+    return data;
   }
 
-  getRecette(id: Recette['id']): Recette | null {
-    const recette = Recettes.find((recette) => recette.getId() === id);
-    return recette || null;
+  async getRecette(id: Recette['id']): Promise<Recette | null> {
+    let data;
+    try {
+      const response =
+        (await Recettes.find((recette) => recette.getId() === id)) || null;
+      data = await response;
+    } catch (error) {
+      console.error('[ RecetteService.getRecette() ]', error);
+      data = null;
+    }
+    return data;
+  }
+
+  toggleFavoris(recette: Recette) {
+    recette.toggleFavoris();
+    return recette.getFavoris();
   }
 }

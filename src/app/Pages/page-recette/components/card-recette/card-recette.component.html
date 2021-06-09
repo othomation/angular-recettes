@@ -1,49 +1,57 @@
-<div class="uk-card uk-card-default uk-card-hover">
-  <div class="uk-card-header">
-    <div class="uk-grid-small uk-flex-middle uk-flex-center" uk-grid>
-      <div class="uk-width-expand">
-        <img src="{{ recette.getImageUrl() }}" />
-      </div>
-      <div class="uk-width-auto">
-        <h3 class="uk-card-title uk-margin-remove-bottom">
-          {{ recette.getNom() }}
-        </h3>
-        <p class="uk-text-meta uk-margin-remove-top">
-          <span
-            >Difficulté : {{ recette.getDifficulte() }}/{{
-              recette.difficulteMax
-            }}</span
-          >
-        </p>
-      </div>
+<div class="card--recette">
+  <article class="card--recette__head">
+    <span
+      title="Favoris !"
+      class="card--recette__head--badgeFavoris"
+      (click)="emitToggleFavoris()"
+      ><i
+        class="bi {{
+          !recette.getFavoris() ? 'bi-suit-heart' : 'bi-suit-heart-fill'
+        }}"
+      ></i>
+    </span>
+    <em>
+      {{ recette.getNom() }}
+    </em>
+    <figure>
+      <img src="{{ recette.getImageUrl() }}" />
+    </figure>
+  </article>
+
+  <article *ngIf="isComplete" class="card--recette__body">
+    <span
+      >Difficulté : {{ recette.getIndicateurs().difficulte }}/{{
+        recette.difficulteMax
+      }}</span
+    >
+
+    <em>Etapes</em>
+    <div *ngIf="recette.getEtapes().length === 0">Pas d'étapes...</div>
+    <div *ngFor="let etape of recette.getEtapes(); let index = index">
+      <dt>{{ index + 1 }} | {{ etape.obligatoire }}</dt>
+      <dd>{{ etape.description }}</dd>
     </div>
-  </div>
-  <div class="uk-card-body" *ngIf="isComplete">
-    <div class="uk-grid-divider" uk-grid>
-      <article class="uk-grid-item">
-        <em>Etapes</em>
-        <dl class="uk-description-list uk-description-list-divider">
-          <div *ngIf="recette.getEtapes().length === 0">Pas d'étapes...</div>
-          <div *ngFor="let etape of recette.getEtapes(); let index = index">
-            <dt>{{ index + 1 }} | {{ etape.nom }}</dt>
-            <dd>{{ etape.description }}</dd>
-          </div>
-        </dl>
-      </article>
-      <article class="uk-grid-item">
-        <em>Ingrédients</em>
-        <ul class="uk-list uk-list-large uk-list-divider">
-          <div *ngIf="recette.getEtapes().length === 0">
-            Pas d'ingrédients...
-          </div>
-          <li *ngFor="let ingredient of recette.getIngredients()">
-            {{ ingredient.nom }}
-          </li>
-        </ul>
-      </article>
-    </div>
-  </div>
-  <!-- <div class="uk-card-footer">
-        <a href="#" class="uk-button uk-button-text">Read more</a>
-    </div> -->
+
+    <em>Ingrédients</em>
+    <ul class="uk-list uk-list-large uk-list-divider">
+      <div *ngIf="recette.getEtapes().length === 0">Pas d'ingrédients...</div>
+      <li *ngFor="let ingredient of recette.getIngredients()">
+        {{ ingredient.nom }}
+      </li>
+    </ul>
+
+    <em>Indicateurs</em>
+    <ul class="uk-list uk-list-large uk-list-divider">
+      <div *ngIf="recette.getEtapes().length === 0">Pas d'indicateurs...</div>
+      <li>Difficulte {{ recette.getIndicateurs().difficulte }}</li>
+      <li>Preparation {{ recette.getIndicateurs().temps_preparation }}</li>
+      <li>Temps de vaisselle {{ recette.getIndicateurs().temps_vaisselle }}</li>
+      <li>
+        Nombre de personnes {{ recette.getIndicateurs().nombre_personnes }}
+      </li>
+      <li>Cout {{ recette.getIndicateurs().cout }}</li>
+    </ul>
+
+    Favori : {{ recette.getFavoris() }}
+  </article>
 </div>
