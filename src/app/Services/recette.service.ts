@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Recette } from '../Models/recette';
 import { Recettes } from '../Mock/recettes.mock';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
 export class RecetteService {
-  constructor() {}
+  constructor(private route: Router) {}
 
   async getRecettes(): Promise<Array<Recette> | null> {
     let data;
@@ -34,6 +35,7 @@ export class RecetteService {
 
   toggleFavoris(recette: Recette) {
     recette.toggleFavoris();
-    return recette.getFavoris();
+    if (recette.getFavoris())
+      this.route.navigate(['recettes/' + recette.getId()]);
   }
 }
