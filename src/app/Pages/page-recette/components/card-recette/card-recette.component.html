@@ -14,7 +14,12 @@
       {{ recette.getNom() }}
     </em>
     <figure>
-      <img src="{{ recette.getImageUrl() }}" />
+      <a *ngIf="!isComplete; else elseBlock" [routerLink]="recette.getId()">
+        <img src="{{ recette.getImageUrl() }}" />
+      </a>
+      <ng-template #elseBlock>
+        <img src="{{ recette.getImageUrl() }}" />
+      </ng-template>
     </figure>
   </article>
 

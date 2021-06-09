@@ -45,7 +45,7 @@ export const Recettes: Array<Recette> = [
         unite: 'l',
       },
     ],
-    true
+    false
   ),
   new Recette(
     '3',

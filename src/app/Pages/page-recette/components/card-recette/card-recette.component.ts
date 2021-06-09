@@ -19,7 +19,6 @@ export class CardRecetteComponent implements OnInit {
   }
 
   emitToggleFavoris() {
-    const response = this.recetteService.toggleFavoris(this.recette);
-    console.log(response);
+    this.recetteService.toggleFavoris(this.recette);
   }
 }
