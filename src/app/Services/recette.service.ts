@@ -6,12 +6,16 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class RecetteService {
-  constructor(private route: Router) {}
+  private recettes: Recette[];
+
+  constructor(private route: Router) {
+    this.recettes = Recettes;
+  }
 
   async getRecettes(): Promise<Array<Recette> | null> {
     let data;
     try {
-      const response = await Recettes;
+      const response = await this.recettes;
       data = await response;
     } catch (error) {
       console.error('[ RecetteService.getRecettes() ]', error);
@@ -24,10 +28,24 @@ export class RecetteService {
     let data;
     try {
       const response =
-        (await Recettes.find((recette) => recette.getId() === id)) || null;
+        (await this.recettes.find((recette) => recette.getId() === id)) || null;
       data = await response;
     } catch (error) {
       console.error('[ RecetteService.getRecette() ]', error);
+      data = null;
+    }
+    return data;
+  }
+
+  async getRecettesFavoris(): Promise<Recette[] | null> {
+    let data;
+    try {
+      const response = await this.recettes.filter(
+        (recette) => recette.getFavoris() === true
+      );
+      data = await response;
+    } catch (error) {
+      console.error('[ RecetteService.getRecettesFavoris() ]', error);
       data = null;
     }
     return data;

@@ -1,1 +1,9 @@
-Page des recettes favorites [HomePage] [Non Implementée]
+<h1 style="text-align: center">Recettes favorites</h1>
+
+<carousel [loop]="true" [autoplay]="true">
+  <div *ngFor="let recetteFavorite of recettes" class="carousel-cell">
+    <a [routerLink]="['/recettes', recetteFavorite.getId()]">
+      <img src="{{ recetteFavorite.getImageUrl() }}" />
+    </a>
+  </div>
+</carousel>

@@ -8,7 +8,7 @@ import { PageRecetteComponent } from './Pages/page-recette/page-recette.componen
 import { PageRecettesComponent } from './Pages/page-recettes/page-recettes.component';
 import { MenuComponent } from './Components/menu/menu.component';
 import { CardRecetteComponent } from './Pages/page-recette/components/card-recette/card-recette.component';
-
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,13 +16,10 @@ import { CardRecetteComponent } from './Pages/page-recette/components/card-recet
     PageRecetteComponent,
     PageRecettesComponent,
     MenuComponent,
-    CardRecetteComponent
+    CardRecetteComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, IvyCarouselModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
