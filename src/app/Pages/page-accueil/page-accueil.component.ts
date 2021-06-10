@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Recette } from 'src/app/Models/recette';
+import { RecetteService } from 'src/app/Services/recette.service';
 
 @Component({
   selector: 'app-page-accueil',
@@ -6,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-accueil.component.scss'],
 })
 export class PageAccueilComponent implements OnInit {
-  constructor() {}
+  constructor(private recetteService: RecetteService) {}
 
-  ngOnInit(): void {}
+  public recettes: Array<Recette> | null = [];
+
+
+  async ngOnInit(): Promise<void> {
+    this.recettes = await this.recetteService.getRecettesFavoris();
+    console.log(this.recettes);
+  }
 }
